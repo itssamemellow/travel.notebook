@@ -66,11 +66,7 @@
       </div>
 
       <div class="booking-container">
-        <form
-          action="https://formspree.io/f/YOUR_FORM_ID"
-          method="POST"
-          class="booking-form"
-        >
+        <form id="booking-form" class="booking-form">
           <div class="form-row">
             <div class="form-group">
               <label>First Name</label>
@@ -94,7 +90,7 @@
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" name="phone" placeholder="+27 00 000 0000" />
+              <input type="tel" name="phone" placeholder="(+27) 00 000 0000" />
             </div>
           </div>
 
@@ -123,11 +119,20 @@
             <textarea
               name="message"
               rows="5"
-              placeholder="Tell us about your dates, specific activities, or special occasions..."
+              placeholder="Tell us about your dates..."
             ></textarea>
           </div>
 
           <button type="submit" class="submit-btn">Request Quote</button>
+          <p
+            id="form-status"
+            style="
+              display: none;
+              margin-top: 15px;
+              color: #006f76;
+              font-weight: 600;
+            "
+          ></p>
         </form>
       </div>
     </main>
@@ -184,4 +189,38 @@
       </div>
     </footer>
   </body>
+
+  <script>
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbx8KgtAfU5FGLeeF_9VjKCEcYLAg9IEN-7zm_RIMXhHIFSQOsCFtoP_5XcRcy1xWEzN/exec";
+    const form = document.getElementById("booking-form");
+    const btn = form.querySelector(".submit-btn");
+    const statusMsg = document.getElementById("form-status");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.innerText = "Sending Request...";
+
+      // We use the same scriptURL you already have
+      fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form),
+        mode: "no-cors",
+      })
+        .then(() => {
+          // DATA SENT SUCCESSFULLY
+          // Redirect to your thank-you page
+          window.location.href = "/Thank-You";
+        })
+        .catch((error) => {
+          statusMsg.style.display = "block";
+          statusMsg.style.color = "red";
+          statusMsg.style.textAlign = "center";
+          statusMsg.innerText = "Error! Please try again or email us directly.";
+          btn.disabled = false;
+          btn.innerText = "Request Quote";
+        });
+    });
+  </script>
 </html>
