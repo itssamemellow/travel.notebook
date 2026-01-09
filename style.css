@@ -842,10 +842,10 @@ main {
 }
 
 .faq-item.active .faq-icon {
-  transform: rotate(45deg); /* turns + into x */
+  transform: rotate(45deg);
 }
 
-/* ========== BLOG SECTION ========== */
+/* BLOG SECTION */
 
 .blog-container {
   width: 100vw;
@@ -944,7 +944,7 @@ main {
   }
 }
 
-/* ========== CTA SECTION ========== */
+/* CTA SECTION */
 
 .cta-container {
   width: 100vw;
@@ -1025,7 +1025,7 @@ main {
   }
 }
 
-/* ========== FOOTER ========== */
+/* FOOTER */
 
 .footer-container {
   width: 100vw;
@@ -1664,7 +1664,7 @@ main {
     }
   }
 }
-/* Common Header for New Pages */
+
 .page-header {
   width: 75%;
   margin: 0 auto;
@@ -1840,16 +1840,15 @@ main {
     top: -60px;
   }
 }
-/* =========================================
-   PACKAGES PAGE STYLES
-   ========================================= */
+
+/* PACKAGES PAGE STYLES */
 
 /* Hero Section */
 .pkg-hero {
   width: 100svw;
   height: 60vh;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/assets/images/content/1761292810671.jpeg"); /* Use a nice wide image here */
+    url("/assets/images/content/1761292810671.jpeg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -2090,9 +2089,9 @@ main {
 }
 
 .special-card .pkg-details h3 {
-  font-family: "Times New Roman", serif; /* Use a different, festive font */
+  font-family: "Times New Roman", serif;
   font-size: 1.2rem;
-  color: #c5ebf4; /* Light accent color */
+  color: #c5ebf4;
   margin-bottom: 5px;
 }
 
@@ -2155,7 +2154,7 @@ main {
 
 .sub-heading {
   display: block;
-  color: #006f76; /* Accent color */
+  color: #006f76;
   font-weight: 600;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -2203,7 +2202,7 @@ main {
 /* Corporate Banner */
 .corporate-banner {
   position: relative;
-  background: url("/assets/images/content/1761292798364.jpeg"); /* Placeholder for a relevant image */
+  background: url("/assets/images/content/1761292798364.jpeg");
   background-size: cover;
   background-position: center;
   padding: 80px 0;
@@ -2218,7 +2217,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.65); /* Dark overlay */
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
 .corp-content {
@@ -2232,7 +2231,7 @@ main {
   font-family: Asbigan;
   font-size: 3rem;
   margin-bottom: 15px;
-  color: #c5ebf4; /* Light accent color */
+  color: #c5ebf4;
 }
 
 .corp-content p {
@@ -2254,4 +2253,20 @@ main {
 
 .btn-white:hover {
   opacity: 0.9;
+}
+
+.g-recaptcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 10px 0;
+}
+
+@media screen and (max-width: 400px) {
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+    margin-left: 7%;
+  }
 }

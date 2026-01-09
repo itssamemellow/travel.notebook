@@ -10,6 +10,7 @@
       type="image/png"
       href="/assets/images/logos/logoicon.png"
     />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <div class="cc-container">
@@ -114,6 +115,14 @@
             </div>
           </div>
 
+          <input
+            type="text"
+            name="_honeypot"
+            style="display: none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
           <div class="form-group">
             <label>Trip Details & Preferences</label>
             <textarea
@@ -121,6 +130,14 @@
               rows="5"
               placeholder="Tell us about your dates..."
             ></textarea>
+          </div>
+
+          <div class="captcha-container">
+            <div
+              class="g-recaptcha"
+              data-sitekey="6Lcx7UQsAAAAACTeczOBBXXZEZbnG-NLwCwxH68G"
+              data-theme="light"
+            ></div>
           </div>
 
           <button type="submit" class="submit-btn">Request Quote</button>
@@ -191,36 +208,81 @@
   </body>
 
   <script>
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbx8KgtAfU5FGLeeF_9VjKCEcYLAg9IEN-7zm_RIMXhHIFSQOsCFtoP_5XcRcy1xWEzN/exec";
-    const form = document.getElementById("booking-form");
-    const btn = form.querySelector(".submit-btn");
-    const statusMsg = document.getElementById("form-status");
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Define the URL
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyT26K049FJIrWd5zbJb7zbkcLwrYE28UCaio0YsM0v_xvf5Q2TA2Va_KFAmwNGdMFq/exec";
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.innerText = "Sending Request...";
+      // 2. Get the Elements
+      const form = document.getElementById("booking-form");
 
-      // We use the same scriptURL you already have
-      fetch(scriptURL, {
-        method: "POST",
-        body: new FormData(form),
-        mode: "no-cors",
-      })
-        .then(() => {
-          // DATA SENT SUCCESSFULLY
-          // Redirect to your thank-you page
-          window.location.href = "/Thank-You";
+      // SAFETY CHECK: If the ID is wrong in HTML, stop here to avoid the error.
+      if (!form) {
+        console.error(
+          "Error: Could not find element with id 'booking-form'. Check your HTML form tag."
+        );
+        return;
+      }
+
+      const btn = form.querySelector(".submit-btn");
+      const statusMsg = document.getElementById("form-status");
+
+      // 3. The Submit Logic
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // STOP the page from reloading/changing URL
+
+        // HONEYPOT CHECK
+        // Make sure your input matches this name: <input name="_honeypot" ...>
+        if (
+          form.elements["_honeypot"] &&
+          form.elements["_honeypot"].value !== ""
+        ) {
+          console.warn("Bot detected.");
+          return;
+        }
+
+        // CAPTCHA CHECK
+        // Check if grecaptcha is loaded
+        if (typeof grecaptcha === "undefined") {
+          alert("Error: Google reCAPTCHA has not loaded. Please refresh.");
+          return;
+        }
+
+        const captchaResponse = grecaptcha.getResponse();
+        if (captchaResponse.length === 0) {
+          alert("Please complete the captcha to prove you are human.");
+          return;
+        }
+
+        // 4. Update Button State
+        btn.disabled = true;
+        btn.innerText = "Sending Request...";
+
+        // 5. Prepare Data
+        const dataToSubmit = new FormData(form);
+        dataToSubmit.append("g-recaptcha-response", captchaResponse);
+
+        // 6. Send to Google
+        fetch(scriptURL, {
+          method: "POST",
+          body: dataToSubmit,
+          mode: "no-cors",
         })
-        .catch((error) => {
-          statusMsg.style.display = "block";
-          statusMsg.style.color = "red";
-          statusMsg.style.textAlign = "center";
-          statusMsg.innerText = "Error! Please try again or email us directly.";
-          btn.disabled = false;
-          btn.innerText = "Request Quote";
-        });
+          .then(() => {
+            // SUCCESS
+            window.location.href = "thank-you.html";
+          })
+          .catch((error) => {
+            // ERROR
+            console.error("Fetch Error:", error);
+            statusMsg.style.display = "block";
+            statusMsg.style.color = "red";
+            statusMsg.innerText =
+              "Error! Please check your internet connection.";
+            btn.disabled = false;
+            btn.innerText = "Request Quote";
+          });
+      });
     });
   </script>
 </html>
