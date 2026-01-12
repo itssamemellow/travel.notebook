@@ -1658,6 +1658,14 @@ main {
 }
 
 @media (max-width: 400px) {
+  .booking-container {
+    width: 90%;
+  }
+
+  .gallery-container {
+    width: 90%;
+  }
+
   .why-choose-container {
     & .features-grid {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
