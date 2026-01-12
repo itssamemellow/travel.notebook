@@ -209,14 +209,9 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // 1. Define the URL
       const scriptURL =
         "https://script.google.com/macros/s/AKfycbyT26K049FJIrWd5zbJb7zbkcLwrYE28UCaio0YsM0v_xvf5Q2TA2Va_KFAmwNGdMFq/exec";
-
-      // 2. Get the Elements
       const form = document.getElementById("booking-form");
-
-      // SAFETY CHECK: If the ID is wrong in HTML, stop here to avoid the error.
       if (!form) {
         console.error(
           "Error: Could not find element with id 'booking-form'. Check your HTML form tag."
@@ -226,13 +221,9 @@
 
       const btn = form.querySelector(".submit-btn");
       const statusMsg = document.getElementById("form-status");
-
-      // 3. The Submit Logic
       form.addEventListener("submit", (e) => {
-        e.preventDefault(); // STOP the page from reloading/changing URL
+        e.preventDefault();
 
-        // HONEYPOT CHECK
-        // Make sure your input matches this name: <input name="_honeypot" ...>
         if (
           form.elements["_honeypot"] &&
           form.elements["_honeypot"].value !== ""
@@ -241,8 +232,6 @@
           return;
         }
 
-        // CAPTCHA CHECK
-        // Check if grecaptcha is loaded
         if (typeof grecaptcha === "undefined") {
           alert("Error: Google reCAPTCHA has not loaded. Please refresh.");
           return;
@@ -254,23 +243,19 @@
           return;
         }
 
-        // 4. Update Button State
         btn.disabled = true;
         btn.innerText = "Sending Request...";
 
-        // 5. Prepare Data
         const dataToSubmit = new FormData(form);
         dataToSubmit.append("g-recaptcha-response", captchaResponse);
 
-        // 6. Send to Google
         fetch(scriptURL, {
           method: "POST",
           body: dataToSubmit,
           mode: "no-cors",
         })
           .then(() => {
-            // SUCCESS
-            window.location.href = "thank-you.html";
+            window.location.href = "Thank-You";
           })
           .catch((error) => {
             // ERROR
