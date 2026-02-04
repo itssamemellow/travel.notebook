@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,9 +15,16 @@
     <div class="cc-container">
       <div class="cc">
         <h4>EXPLORE. DISCOVER. REMEMBER.</h4>
-        <span>
+        <span id="cc">
           <a href="Ts&Cs">Terms of Service</a>
           <a href="Privacy Policy">Privacy Policy</a>
+        </span>
+        <span id="cc-dropdown">
+          <span id="cc-dropdown-icon" onclick="toggleCcMenu()">+</span>
+          <span id="cc-dropdown-content">
+            <a href="Ts&Cs">Terms of Service</a>
+            <a href="Privacy Policy">Privacy Policy</a>
+          </span>
         </span>
       </div>
     </div>
@@ -26,29 +33,36 @@
       <div class="nav-container">
         <nav>
           <span class="logo">
-            <a
-              href="/"
-              style="
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-                gap: 20px;
-              "
-            >
-              <img src="/assets/images/logos/logoiconwt.png" alt="logosmall" />
-              <h2>Travel Notebook</h2>
-            </a>
+            <img src="/assets/images/logos/logoiconwt.png" alt="logosmall" />
+            <h2>Travel Notebook</h2>
           </span>
-          <span class="links">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/#about">About us</a></li>
-              <li><a href="/#servises">Services</a></li>
-              <li><a href="Gallery" style="color: #c5ebf4">Gallery</a></li>
-            </ul>
-            <a href="Bookings"><button>Book Now</button></a>
-          </span>
+          <div class="nav">
+            <span class="links-dropdown">
+              <span id="links-dropdown-icon" onclick="toggleMobileNav(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </span>
+              <span id="links-dropdown-content">
+                <ul class="links">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/#about">About us</a></li>
+                  <li><a href="/Packages">Services</a></li>
+                  <li><a href="Gallery">Gallery</a></li>
+                </ul>
+                <a href="Bookings"><button>Book Now</button></a>
+              </span>
+            </span>
+            <span class="links">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About us</a></li>
+                <li><a href="/Packages">Services</a></li>
+                <li><a href="Gallery">Gallery</a></li>
+              </ul>
+              <a href="Bookings"><button>Book Now</button></a>
+            </span>
+          </div>
         </nav>
       </div>
     </header>
@@ -171,58 +185,80 @@
           </form>
         </div>
       </section>
-    </main>
 
-    <footer class="footer-container">
-      <div class="footer">
-        <img
-          src="/assets/images/logos/mainlogo.png"
-          alt="Travel Notebook Logo"
-          class="footer-logo"
-        />
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <p>
-              Inspiring seamless travel experiences, Travel Notebook makes
-              exploration accessible, creating meaningful memories worldwide.
-            </p>
-            <div class="footer-socials">
-              <a href="#"
-                ><img
-                  src="/assets/images/logos/icons/ri-instagram-line.png"
-                  alt="Instagram"
-              /></a>
-              <a href="#"
-                ><img
-                  src="/assets/images/logos/icons/ri-twitter-x-line.png"
-                  alt="X"
-              /></a>
-              <a href="#"
-                ><img
-                  src="/assets/images/logos/icons/ri-facebook-line.png"
-                  alt="Facebook"
-              /></a>
+      <footer class="footer-container">
+        <div class="footer">
+          <img
+            src="/assets/images/logos/mainlogo.png"
+            alt="Travel Notebook Logo"
+            class="footer-logo"
+          />
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <p>
+                Inspiring seamless travel experiences, Travel Notebook makes
+                exploration accessible, creating meaningful memories worldwide.
+              </p>
+              <div class="footer-socials">
+                <a href="#"
+                  ><img
+                    src="/assets/images/logos/icons/ri-instagram-line.png"
+                    alt="Instagram"
+                /></a>
+                <a href="#"
+                  ><img
+                    src="/assets/images/logos/icons/ri-twitter-x-line.png"
+                    alt="X"
+                /></a>
+                <a href="#"
+                  ><img
+                    src="/assets/images/logos/icons/ri-facebook-line.png"
+                    alt="Facebook"
+                /></a>
+              </div>
+            </div>
+            <div class="footer-contact">
+              <h3>Contact us</h3>
+              <p>
+                <strong>Contact:</strong>
+                <a href="mailto:admin@travelnotebook.co.za"
+                  >admin@travelnotebook.co.za</a
+                >
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+27813843568">081 384 3568</a>
+              </p>
+              <a href="Bookings" class="footer-btn">Start Journey Now</a>
             </div>
           </div>
-          <div class="footer-contact">
-            <h3>Contact us</h3>
-            <p>
-              <strong>Contact:</strong>
-              <a href="mailto:admin@travelnotebook.co.za"
-                >admin@travelnotebook.co.za</a
-              >
-            </p>
-            <p>
-              <strong>Phone:</strong>
-              <a href="tel:+27813843568">081 384 3568</a>
-            </p>
-            <a href="Bookings" class="footer-btn">Start Journey Now</a>
+          <div class="footer-bottom">
+            © 2025 Travel Notebook, EXPLORE. DISCOVER. REMEMBER.
           </div>
         </div>
-        <div class="footer-bottom">
-          © 2025 Travel Notebook, EXPLORE. DISCOVER. REMEMBER.
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </main>
+
+    <script>
+      function toggleMobileNav(icon) {
+        icon.classList.toggle("change");
+
+        var menu = document.getElementById("links-dropdown-content");
+        menu.classList.toggle("show");
+      }
+
+      function toggleCcMenu() {
+        var menu = document.getElementById("cc-dropdown-content");
+        var icon = document.getElementById("cc-dropdown-icon");
+
+        menu.classList.toggle("show");
+
+        if (menu.classList.contains("show")) {
+          icon.innerText = "-";
+        } else {
+          icon.innerText = "+";
+        }
+      }
+    </script>
   </body>
 </html>

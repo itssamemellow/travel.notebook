@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,9 +15,16 @@
     <div class="cc-container">
       <div class="cc">
         <h4>EXPLORE. DISCOVER. REMEMBER.</h4>
-        <span>
+        <span id="cc">
           <a href="Ts&Cs">Terms of Service</a>
           <a href="Privacy Policy">Privacy Policy</a>
+        </span>
+        <span id="cc-dropdown">
+          <span id="cc-dropdown-icon" onclick="toggleCcMenu()">+</span>
+          <span id="cc-dropdown-content">
+            <a href="Ts&Cs">Terms of Service</a>
+            <a href="Privacy Policy">Privacy Policy</a>
+          </span>
         </span>
       </div>
     </div>
@@ -26,31 +33,36 @@
       <div class="nav-container">
         <nav>
           <span class="logo">
-            <a
-              href="/"
-              style="
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-                gap: 20px;
-              "
-            >
-              <img src="/assets/images/logos/logoiconwt.png" alt="logosmall" />
-              <h2>Travel Notebook</h2>
-            </a>
+            <img src="/assets/images/logos/logoiconwt.png" alt="logosmall" />
+            <h2>Travel Notebook</h2>
           </span>
-          <span class="links">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/#about">About us</a></li>
-              <li>
-                <a href="/#servises" style="color: #c5ebf4">Services</a>
-              </li>
-              <li><a href="Gallery">Gallery</a></li>
-            </ul>
-            <a href="Bookings"><button>Book Now</button></a>
-          </span>
+          <div class="nav">
+            <span class="links-dropdown">
+              <span id="links-dropdown-icon" onclick="toggleMobileNav(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </span>
+              <span id="links-dropdown-content">
+                <ul class="links">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/#about">About us</a></li>
+                  <li><a href="/Packages">Services</a></li>
+                  <li><a href="Gallery">Gallery</a></li>
+                </ul>
+                <a href="Bookings"><button>Book Now</button></a>
+              </span>
+            </span>
+            <span class="links">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About us</a></li>
+                <li><a href="/Packages">Services</a></li>
+                <li><a href="Gallery">Gallery</a></li>
+              </ul>
+              <a href="Bookings"><button>Book Now</button></a>
+            </span>
+          </div>
         </nav>
       </div>
     </header>
@@ -120,18 +132,21 @@
             <div class="pkg-image">
               <span class="pkg-tag">Open for Booking</span>
               <img
-                src="/assets/images/content/1761292886767.jpeg"
-                alt="Group Trip 1"
+                src="/assets/images/content/bangkok-vietnam.jpg"
+                alt="Bangkok & Vietnam Trip"
               />
             </div>
             <div class="pkg-details">
-              <h3>Bali Island Hopping</h3>
-              <p class="pkg-date"><em>January 2026</em></p>
+              <h3>Bangkok & Vietnam</h3>
+              <p class="pkg-date"><em>21 - 30 May 2026</em></p>
               <p>
-                7 Days of pristine beaches, temples, and culture. Includes
-                flights and accommodation.
+                Experience Ba Na Hills, Ha Long Bay Cruise, and Hoi An. Includes
+                flights, 4* hotels, and transfers.
+                <br /><strong>R36 000 PPS</strong>
               </p>
-              <a href="Bookings" class="pkg-btn">View Details</a>
+              <button class="pkg-btn" onclick="openModal('modal-bangkok')">
+                View Details
+              </button>
             </div>
           </div>
 
@@ -139,31 +154,183 @@
             <div class="pkg-image">
               <span class="pkg-tag">Open for Booking</span>
               <img
-                src="/assets/images/content/1761292995579.jpeg"
-                alt="Group Trip 2"
+                src="/assets/images/content/dubai-phuket.webp"
+                alt="Dubai & Phuket Trip"
               />
             </div>
             <div class="pkg-details">
-              <h3>European Summer</h3>
-              <p class="pkg-date"><em>December 2025</em></p>
+              <h3>Dubai & Phuket</h3>
+              <p class="pkg-date"><em>06 - 13 August 2026</em></p>
               <p>
-                Explore the historic streets of Italy and France with a fun
-                group of travelers.
+                The perfect mix of city and beach. Includes Dubai Yacht Cruise,
+                Desert Safari, and Yona Beach Club.
+                <br /><strong>R36 000 PPS</strong>
               </p>
-              <a href="Bookings" class="pkg-btn">View Details</a>
+              <button class="pkg-btn" onclick="openModal('modal-dubai')">
+                View Details
+              </button>
             </div>
           </div>
 
-          <div class="pkg-card special-card">
-            <div class="pkg-details centered">
-              <h3><em>Festive Season</em></h3>
-              <h2>MYSTERY TRIP</h2>
-              <p>Something spectacular is coming for the holidays.</p>
-              <button class="pkg-btn-dark">Announcing Soon</button>
+          <div class="pkg-card">
+            <div class="pkg-image">
+              <span class="pkg-tag">Open for Booking</span>
+              <img
+                src="/assets/images/content/euro-trip.jpg"
+                alt="Euro Trip Summer"
+              />
+            </div>
+            <div class="pkg-details">
+              <h3>Euro Trip Summer</h3>
+              <p class="pkg-date"><em>02 - 12 September 2026</em></p>
+              <p>
+                Paris, Nice, Amalfi & Rome. 10 days of European culture, city
+                tours, and boat cruises.
+                <br /><strong>R52 000 PPS</strong>
+              </p>
+              <button class="pkg-btn" onclick="openModal('modal-euro')">
+                View Details
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      <div id="modal-bangkok" class="trip-modal">
+        <div class="trip-modal-content">
+          <div class="trip-modal-header">
+            <h3>Bangkok & Vietnam</h3>
+            <span class="close-modal" onclick="closeModal('modal-bangkok')"
+              >&times;</span
+            >
+          </div>
+          <div class="trip-modal-body">
+            <div class="trip-price-highlight">R36 000 Per Person Sharing</div>
+            <div class="trip-lists">
+              <div>
+                <h4>Includes</h4>
+                <ul>
+                  <li>International & Local flights</li>
+                  <li>All airport transfers</li>
+                  <li>3 Nights in Bangkok & 5 Nights in Vietnam</li>
+                  <li>Bangkok city tour & Ba Na Hills Tour</li>
+                  <li>Ha Long Bay Cruise</li>
+                  <li>Quang Phu Incense Village & Hoi An day trip tour</li>
+                  <li>4* Hotels</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Excludes</h4>
+                <ul>
+                  <li>Transportation not listed</li>
+                  <li>All meals & activities not listed</li>
+                  <li>Travel insurance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="trip-modal-footer">
+            <p style="margin-bottom: 10px">
+              <strong>Contact:</strong> 081-384-3598 |
+              admin@travelnotebook.co.za
+            </p>
+            <a href="Bookings"
+              ><button class="pkg-btn">Book This Trip</button></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-dubai" class="trip-modal">
+        <div class="trip-modal-content">
+          <div class="trip-modal-header">
+            <h3>Dubai & Phuket</h3>
+            <span class="close-modal" onclick="closeModal('modal-dubai')"
+              >&times;</span
+            >
+          </div>
+          <div class="trip-modal-body">
+            <div class="trip-price-highlight">R36 000 Per Person Sharing</div>
+            <div class="trip-lists">
+              <div>
+                <h4>Includes</h4>
+                <ul>
+                  <li>International flights & All airport transfers</li>
+                  <li>3 Nights Dubai & 4 Nights Phuket</li>
+                  <li>Dubai Yacht Cruise & Desert Safari</li>
+                  <li>Yona Beach Club & Phi Phi Island</li>
+                  <li>Breakfast Daily & Personal Host</li>
+                  <li>Transfer to activities</li>
+                  <li>Dubai Tourist Visa</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Excludes</h4>
+                <ul>
+                  <li>Transportation not listed</li>
+                  <li>All meals & activities not listed</li>
+                  <li>Travel insurance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="trip-modal-footer">
+            <p style="margin-bottom: 10px">
+              <strong>Contact:</strong> 081-384-3598 |
+              admin@travelnotebook.co.za
+            </p>
+            <a href="Bookings"
+              ><button class="pkg-btn">Book This Trip</button></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-euro" class="trip-modal">
+        <div class="trip-modal-content">
+          <div class="trip-modal-header">
+            <h3>Euro Trip Summer</h3>
+            <span class="close-modal" onclick="closeModal('modal-euro')"
+              >&times;</span
+            >
+          </div>
+          <div class="trip-modal-body">
+            <div class="trip-price-highlight">R52 000 Per Person Sharing</div>
+            <div class="trip-lists">
+              <div>
+                <h4>Includes</h4>
+                <ul>
+                  <li>International & Local flights</li>
+                  <li>All airport transfers</li>
+                  <li>
+                    1 Night Paris, 3 Nights Nice, 3 Nights Amalfi, 2 Nights Rome
+                  </li>
+                  <li>Breakfast daily</li>
+                  <li>2 City Tours & 1 Beachclub entrance</li>
+                  <li>Boat cruise in Amalfi & Day trip to Florence</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Excludes</h4>
+                <ul>
+                  <li>Transportation not listed</li>
+                  <li>All meals & activities not listed</li>
+                  <li>Travel insurance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="trip-modal-footer">
+            <p style="margin-bottom: 10px">
+              <strong>Contact:</strong> 081-384-3598 |
+              admin@travelnotebook.co.za
+            </p>
+            <a href="Bookings"
+              ><button class="pkg-btn">Book This Trip</button></a
+            >
+          </div>
+        </div>
+      </div>
 
       <section id="private" class="bespoke-section">
         <div class="bespoke-wrapper">
@@ -269,5 +436,45 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function toggleMobileNav(icon) {
+        icon.classList.toggle("change");
+
+        var menu = document.getElementById("links-dropdown-content");
+        menu.classList.toggle("show");
+      }
+
+      function toggleCcMenu() {
+        var menu = document.getElementById("cc-dropdown-content");
+        var icon = document.getElementById("cc-dropdown-icon");
+
+        menu.classList.toggle("show");
+
+        if (menu.classList.contains("show")) {
+          icon.innerText = "-";
+        } else {
+          icon.innerText = "+";
+        }
+      }
+
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent scrolling behind modal
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+      }
+
+      // Close modal if user clicks outside of the content
+      window.onclick = function (event) {
+        if (event.target.classList.contains("trip-modal")) {
+          event.target.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      };
+    </script>
   </body>
 </html>
