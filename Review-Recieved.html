@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Review Submitted | Travel Notebook</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/logos/logoicon.png"
+    />
+    <style>
+      :root {
+        --brand-teal: #006f76;
+        --brand-white: #ffffff;
+      }
+
+      body {
+        margin: 0;
+        background-color: #fcfdfd;
+        font-family: "Asbigan", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .thank-you-card {
+        text-align: center;
+        padding: 60px;
+        background: white;
+        max-width: 500px;
+        border-top: 6px solid var(--brand-teal);
+        box-shadow: 0 30px 60px rgba(0, 110, 118, 0.253);
+        border-radius: 40px;
+        margin: 0 80px;
+      }
+
+      .svg-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 30px;
+        overflow: visible;
+      }
+
+      .review-svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--brand-teal);
+        fill: rgba(0, 111, 118, 0.1); /* Slight teal fill for the star */
+      }
+
+      .star-body {
+        animation: breathe 1.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        color: var(--brand-teal);
+        margin: 0 0 15px 0;
+        letter-spacing: -1px;
+      }
+
+      p {
+        font-family: "Poppins", sans-serif;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .btn-home {
+        padding: 16px 40px;
+        background: #006f76;
+        color: #fff;
+        border: #006f76 1px solid;
+        text-decoration: none;
+        border-radius: 30px;
+        display: inline-block;
+        font-size: 15px;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .btn-home:hover {
+        background: #ffffff00;
+        color: #006f76;
+      }
+
+      @media (max-width: 700px) {
+        .thank-you-card {
+          padding: 40px;
+          margin: 0 40px;
+        }
+
+        h1 {
+          font-size: 2.4rem;
+        }
+
+        .svg-container {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="thank-you-card">
+      <div class="svg-container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="review-svg"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <g class="star-body">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </g>
+        </svg>
+      </div>
+
+      <h1>Thanks for sharing!</h1>
+      <p>
+        Your insights help fellow travelers plan their perfect escapes. We truly
+        appreciate you taking the time to share your journey with the Travel
+        Notebook community.
+      </p>
+
+      <a href="/" class="btn-home">Return to Home</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://travelnotebook.co.za/Reviews" />
+    <title>Explorer Stories | Travel Notebook</title>
+    <meta
+      name="title"
+      content="Review and Explorer Stories | Travel Notebook"
+    />
+    <meta
+      name="description"
+      content="Read stories from our fellow travelers and share your own Travel Notebook experience."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/logos/logoicon.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Travel Notebook Custom Itineraries",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "12"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="cc-container">
+      <div class="cc">
+        <h4>EXPLORE. DISCOVER. REMEMBER.</h4>
+        <span id="cc">
+          <a href="FAQ">FAQ</a>
+          <a href="Ts&Cs">Terms of Service</a>
+          <a href="Privacy Policy">Privacy Policy</a>
+        </span>
+        <span id="cc-dropdown">
+          <span id="cc-dropdown-icon" onclick="toggleCcMenu()">+</span>
+          <span id="cc-dropdown-content">
+            <a href="FAQ">FAQ</a>
+            <a href="Ts&Cs">Terms of Service</a>
+            <a href="Privacy Policy">Privacy Policy</a>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <header>
+      <div class="nav-container">
+        <nav>
+          <span class="logo">
+            <img src="/assets/images/logos/logoiconwt.png" alt="logosmall" />
+            <h2>Travel Notebook</h2>
+          </span>
+          <div class="nav">
+            <span class="links-dropdown">
+              <span id="links-dropdown-icon" onclick="toggleMobileNav(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </span>
+              <span id="links-dropdown-content">
+                <ul class="links">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/#about">About us</a></li>
+                  <li><a href="/Packages">Services</a></li>
+                  <li><a href="Gallery">Gallery</a></li>
+                </ul>
+                <a href="Bookings"><button>Book Now</button></a>
+              </span>
+            </span>
+            <span class="links">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About us</a></li>
+                <li><a href="/Packages">Services</a></li>
+                <li><a href="Gallery">Gallery</a></li>
+              </ul>
+              <a href="Bookings"><button>Book Now</button></a>
+            </span>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="page-header">
+        <h1>Explorer Stories</h1>
+        <p>
+          Every journey is a story waiting to be told. Share yours with the
+          community.
+        </p>
+      </div>
+
+      <section class="review-form-container">
+        <div class="booking-container">
+          <form id="review-form" class="booking-form">
+            <input type="hidden" name="formType" value="review" />
+            <h3 class="review-head">Leave a Review</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Alex Smith"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Where did you go?</label>
+                <input
+                  type="text"
+                  name="trip"
+                  placeholder="e.g. Serengeti Safari"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Your Rating</label>
+              <select name="rating" class="rating-select">
+                <option value="5">★★★★★ - Excellent</option>
+                <option value="4">★★★★ - Very Good</option>
+                <option value="3">★★★ - Average</option>
+                <option value="2">★★ - Fair</option>
+                <option value="1">★ - Poor</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Tell us about your trip</label>
+              <textarea
+                name="review"
+                rows="5"
+                placeholder="What was the highlight of your journey?"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input
+                type="checkbox"
+                id="permission"
+                name="permission"
+                value="Granted"
+                required
+              />
+              <label for="permission"
+                >I give Travel Notebook permission to share my story and first
+                name on their website and social channels.</label
+              >
+            </div>
+
+            <button type="submit" class="submit-btn">Post to Notebook</button>
+          </form>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="reviews-display">
+        <div class="container">
+          <h2 class="tag">Recent Memories</h2>
+          <div class="review-grid">
+            <div class="review-card">
+              <div class="stars">
+                <p class="stars">★★★★★</p>
+              </div>
+              <p class="review-text">
+                "The Cape Town itinerary was seamless. From the hidden cafes to
+                the sunset spots, it felt like a local planned it!"
+              </p>
+              <p class="reviewer-info">
+                — <strong>Anonymous</strong> | <em>Cape Town Escape</em>
+              </p>
+            </div>
+
+            <div class="review-card">
+              <div class="stars">
+                <p class="stars">★★★★★</p>
+              </div>
+              <p class="review-text">
+                "I've never had a more stress-free group trip. Travel Notebook
+                handled every tiny detail."
+              </p>
+              <p class="reviewer-info">
+                — <strong>Anonymous</strong> | <em>Bali Adventure</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-container">
+      <div class="footer">
+        <img
+          src="/assets/images/logos/mainlogo.png"
+          alt="Travel Notebook Logo"
+          class="footer-logo"
+        />
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p>
+              Inspiring seamless travel experiences, Travel Notebook makes
+              exploration accessible, creating meaningful memories worldwide.
+            </p>
+
+            <div class="footer-socials">
+              <a
+                href="https://www.instagram.com/notebook_travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="/assets/images/logos/icons/ri-instagram-line.png"
+                  alt="Instagram"
+              /></a>
+              <a href="#"
+                ><img
+                  src="/assets/images/logos/icons/ri-facebook-line.png"
+                  alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <h3>Contact us</h3>
+            <p>
+              <strong>Contact:</strong>
+              <a href="mailto:admin@travelnotebook.co.za"
+                >admin@travelnotebook.co.za</a
+              >
+            </p>
+            <p>
+              <strong>Phone:</strong>
+              <a href="tel:+27813843568">081 384 3568</a>
+            </p>
+            <a href="Bookings" class="footer-btn">Start Journey Now</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2025 Travel Notebook, EXPLORE. DISCOVER. REMEMBER.
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzlo8Y7lYknIq_HqDS8tKWQ2XvnYBN7chctaVeMoGcb1MiRRNZVwqFlZYYS48lAey0K/exec";
+      const form = document.getElementById("review-form");
+      const btn = form.querySelector(".submit-btn");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Posting to Notebook...";
+
+        const dataToSubmit = new FormData(form);
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: dataToSubmit,
+          mode: "no-cors",
+        })
+          .then(() => {
+            window.location.href = "Review-Recieved";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            btn.disabled = false;
+            btn.innerText = "Try Again";
+          });
+      });
+    });
+  </script>
+</html>
