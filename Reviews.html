@@ -253,6 +253,26 @@
   </body>
 
   <script>
+    function toggleMobileNav(icon) {
+      icon.classList.toggle("change");
+
+      var menu = document.getElementById("links-dropdown-content");
+      menu.classList.toggle("show");
+    }
+
+    function toggleCcMenu() {
+      var menu = document.getElementById("cc-dropdown-content");
+      var icon = document.getElementById("cc-dropdown-icon");
+
+      menu.classList.toggle("show");
+
+      if (menu.classList.contains("show")) {
+        icon.innerText = "-";
+      } else {
+        icon.innerText = "+";
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       const scriptURL =
         "https://script.google.com/macros/s/AKfycbzlo8Y7lYknIq_HqDS8tKWQ2XvnYBN7chctaVeMoGcb1MiRRNZVwqFlZYYS48lAey0K/exec";
