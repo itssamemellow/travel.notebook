@@ -1943,7 +1943,7 @@ main {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  height: 350px;
+  height: 400px;
   transition: transform 0.3s ease;
 }
 .gallery-item:hover {
