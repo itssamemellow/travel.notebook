@@ -388,44 +388,8 @@
             Noted
           </h2>
 
-          <div class="testi-grid">
-            <div class="testi-card">
-              <h3>Incredible and unforgettable experience</h3>
-              <p class="stars">★★★★★</p>
-              <p>
-                Travel Notebook planned our dream honeymoon! Every detail was
-                perfect, from the flights to the accommodations.
-
-                <br /><br />We didn't have to worry about a thing. Highly
-                recommend their personalized service and attention to detail.
-              </p>
-            </div>
-
-            <div class="testi-card">
-              <h3>Seamless business travel</h3>
-              <p class="stars">★★★★★</p>
-              <p>
-                I've used Travel Notebook for several business trips, and they
-                always exceed my expectations.
-
-                <br /><br />Their corporate packages are top-notch, and their
-                team is incredibly responsive. I highly recommend them for
-                business travel.
-              </p>
-            </div>
-
-            <div class="testi-card">
-              <h3>Best family vacation</h3>
-              <p class="stars">★★★★★</p>
-              <p>
-                Our family vacation was the best we've ever had, thanks to
-                Travel Notebook!
-
-                <br /><br />They took care of everything, from booking flights
-                to arranging activities. We created memories that will last a
-                lifetime.
-              </p>
-            </div>
+          <div class="testi-grid" id="testi-grid">
+            <p id="review-status">Loading stories…</p>
           </div>
 
           <div class="testi-button">
@@ -644,6 +608,44 @@
     </main>
 
     <script>
+      const grid = document.getElementById("testi-grid");
+      const reviewsURL =
+        "https://script.google.com/macros/s/AKfycbwYdD0d6rstC43sT5duj939AQVxM37x2it676UkeWhk7ZUAvPPAjk-EqKwQITMfssLhIA/exec";
+
+      function escapeHTML(str) {
+        const d = document.createElement("div");
+        d.textContent = str;
+        return d.innerHTML;
+      }
+
+      fetch(reviewsURL)
+        .then((res) => res.json())
+        .then((reviews) => {
+          if (!reviews.length) {
+            grid.innerHTML = "<p>Be the first to share your story!</p>";
+            return;
+          }
+          grid.innerHTML = reviews
+            .map(
+              (r) => `
+      <div class="testi-card">
+        <div class="stars">
+          <p class="stars">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</p>
+        </div>
+        <p>"${escapeHTML(r.review)}"</p>
+        <p>
+          — <strong>${escapeHTML(r.name)}</strong> | <em>${escapeHTML(r.trip)}</em>
+        </p>
+      </div>
+    `,
+            )
+            .join("");
+        })
+        .catch(() => {
+          grid.innerHTML =
+            "<p>Stories are taking a moment to load. Please refresh.</p>";
+        });
+
       function toggleMobileNav(icon) {
         icon.classList.toggle("change");
 

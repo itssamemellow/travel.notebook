@@ -824,11 +824,6 @@ main {
       justify-content: center;
       gap: 30px;
 
-      & div:nth-child(3) {
-        transform: translateX(calc(50% + 15px));
-        justify-self: center;
-      }
-
       & .testi-card {
         display: flex;
         flex-direction: column;
